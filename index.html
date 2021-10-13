@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>오늘뭐먹지?</title>
+
+	<style type="text/css">
+
+		@font-face {font-family: 'S-CoreDream-2ExtraLight';
+     				src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
+     				font-weight: normal;font-style: normal;}
+     	@font-face {font-family: 'S-CoreDream-6Bold';
+     				src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+     				font-weight: normal; font-style: normal;}
+		@font-face {font-family: 'yg-jalnan';
+    				src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    				font-weight: normal; font-style: normal;}
+
+    	body{margin: 0;
+			background: url("bg.jpg");
+			background-size: cover;
+			background-repeat: no-repeat
+			background-attachment: fixed;
+			overflow:hidden;}
+
+		.flex{display: flex; justify-content: center;}
+
+		h1 {font-size: 2em; text-align: center; font-family: 'yg-jalnan'; color: black; margin-top: 60px; margin-bottom: 0px;}
+
+		button {background-color: darkgray;
+				width: 200px; height: 60px;
+				border-radius: 100px;
+				border: none;
+				color: white;
+				text-align: center;
+				text-decoration: none;
+				transition-duration: 0.4s;
+				cursor: pointer;
+				justify-content: center;
+				z-index: 5;}
+
+		.button1 {background-color: darkgray; color: white; border: 0px solid darkgray;}
+		.button1:hover {background-color: orangered; color: white;}
+
+		.butText{font-size: 1.5em; color: white; font-family: 'yg-jalnan'; text-align: center;}
+		.foodText{font-size: 2em; color: white; font-family: 'yg-jalnan'; text-align: center;}
+		.text{font-size: 4.5em; color: black; font-family: 'yg-jalnan'; text-align: center; margin-top: 0px; padding-bottom: 0px; z-index: 100;}
+		#foodname{font-size: 7em; color: orangered; font-family: 'yg-jalnan'; text-align: center; margin-top: 55px;}
+
+		.zindex1{z-index: 1;}
+		.zindex100{z-index: 100;}
+
+		.w{position: absolute; left: 0; top: 0; padding: 50px; pointer-events: none; z-index: 1;}
+	
+	</style>
+</head>d
+<body>
+
+	<section class="container">
+		<h1>점메추 & 저메추</h1>
+			<div class="text zindex100">뭐 먹을까?</div>
+			<p id="foodname"></p>
+			<div class="flex zindex100" id="clickBut">
+				<button class="button butText button1 zindex100" onclick="typeWriter()">Click!</button>
+			</div>
+	</section>
+
+	<script type="text/javascript">
+
+			var a = ["w1", "w2", "w3", "w4"];
+
+			for(var i=0;i<17;i++){
+				var t = document.createElement("img");
+				t.src = a[randomBH(0,3)] + ".png";
+				t.className = "w";
+				t.style.width = randomBH(100,300) + "px";
+				t.style.height = "auto";
+				t.style.left = Math.random()*screen.availWidth + "px";
+				t.style.top = Math.random()*screen.availHeight + "px";
+				document.body.appendChild(t);}
+			
+			function randomBH(min, max) {
+			  		min = Math.ceil(min);
+			 		max = Math.floor(max);
+			  		return Math.floor(Math.random() * (max - min + 1)) + min;}
+
+			var i = 0;
+			var txt = '오늘의 음식은.....\n 떡볶이!';
+			var speed = 150;
+
+			function typeWriter() {
+			  if (i < txt.length) {
+			    document.getElementById("foodname").innerHTML += txt.charAt(i);
+			    i++;
+			    setTimeout(typeWriter, speed);
+			  }
+			}
+		
+	</script>
+</body>
+</html>
